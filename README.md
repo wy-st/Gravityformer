@@ -2,11 +2,20 @@
 
 Code for manuscript "A Gravity-informed Spatiotemporal Transformer for Human Activity Intensity Prediction".
 
-The code will coming soon.
+# Introduction:
+This is a Pytorch implementation of Gravityformer. Our code is based on ASTGCN (https://github.com/guoshnBJTU/ASTGCN-r-pytorch).
+
+# Pre:
+Step1: Clone the code of ASTGCN.
+
+Step2: Put Gravityformer.py into model and MN_astgcn.conf into configurations.
 
 
+# Train and Test:
+Please refer to ASTGCN's Run and Test (https://github.com/guoshnBJTU/ASTGCN-r-pytorch).
 
-
+# Datasets:
+Due to privacy issues associated with the datasets, please contact Prof. Di Zhu (dizhu@umn.edu) if you require access to the data.
 
 # Reference
 ```latex

@@ -227,7 +227,7 @@ class G_Generactor(nn.Module):
 
 class GFormer(nn.Module):
     def __init__(self, device, num_nodes, dropout=0.3,
-                 in_dim=3, out_dim=4, time_steps=12, residual_channels=32,
+                 in_dim=1, out_dim=4, time_steps=12, residual_channels=32,
                  dilation_channels=32, skip_channels=256,
                  layers=6, adj=None):
         super().__init__()

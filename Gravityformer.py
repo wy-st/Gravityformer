@@ -227,7 +227,7 @@ class G_Generactor(nn.Module):
 
 class GFormer(nn.Module):
     def __init__(self, device, num_nodes, dropout=0.3,
-                 in_dim=1, out_dim=4, time_steps=12, residual_channels=32,
+                 in_dim=3, out_dim=4, time_steps=12, residual_channels=32,
                  dilation_channels=32, skip_channels=256,
                  layers=6, adj=None):
         super().__init__()
@@ -306,8 +306,7 @@ class GFormer(nn.Module):
         emb_feature = torch.cat((emb_day, emb_week, emb_holi, emb_adaptive), dim=1)
 
         input, inflow, outflow = overallinput[:, :, 0:1, :], overallinput[:, :, 1:2, :], overallinput[:, :, 2:3, :]
-        x = input.permute(0, 2, 1, 3)
-        x = self.start_conv(x)
+        x = self.start_conv(overallinput.permute(0, 2, 1, 3))
 
         inflow = self.inflow_fc(inflow.permute(0, 2, 1, 3))
         outflow = self.outflow_fc(outflow.permute(0, 2, 1, 3))

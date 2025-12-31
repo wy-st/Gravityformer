@@ -10,12 +10,16 @@ Step1: Clone the code of ASTGCN.
 
 Step2: Put Gravityformer.py into model and SF_astgcn.conf into configurations.
 
+Step3: Put SF_r3_d0_w0_astcgn.npz into data/SF/ and also adj_SF.npz into data/SF/.
+
 
 # Train and Test:
 Please refer to ASTGCN's Run and Test (https://github.com/guoshnBJTU/ASTGCN-r-pytorch).
 
+
 # Datasets:
 Due to privacy issues associated with the datasets, please contact Prof. Di Zhu (dizhu@umn.edu) if you require access to the data.
+
 
 # Reference
 ```latex

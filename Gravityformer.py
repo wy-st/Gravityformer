@@ -97,16 +97,9 @@ class Dual_axis(nn.Module):
         nq = nq.view(-1, n, self.heads, self.d_n).permute(0, 2, 1, 3).contiguous()
         nk = nk.view(-1, n, self.heads, self.d_n).permute(0, 2, 1, 3).contiguous()
         attn_n = torch.einsum('... i d, ... j d -> ... i j', nq, nk) * self.scaled_factor_n
-        attn_n_o = attn_n + self.Bn
-        attn_n = torch.softmax(attn_n_o.reshape(b, t, self.heads, n, n), dim=-1) * adj_s.unsqueeze(2).repeat(1, 1, self.num_heads, 1, 1) # [b, heads, h, h] -> [3, 2, 112, 112]
-        # attn_n = torch.softmax(attn_n.reshape(b, t, self.heads, n, n), dim=-1)
+        attn_n = attn_n + self.Bn
+        attn_n = torch.softmax(attn_n.reshape(b, t, self.heads, n, n), dim=-1) * adj_s.unsqueeze(2).repeat(1, 1, self.num_heads, 1, 1) # [b, heads, h, h] -> [3, 2, 112, 112]
         attn_n = attn_n.permute(0, 2, 1, 3, 4).reshape(b * self.heads, t, n, n)
-
-        self.saved_attn_n = attn_n_o.reshape(b, t, self.heads, n, n).squeeze(2)  # This is the tensor after softmax
-        self.saved_adj_s = adj_s
-        # a1 = attn_n.detach().cpu().numpy()
-        # a2 = adj_s.detach().cpu().numpy()
-        # np.savez('attn.npz', a1=a1, a2=a2)
 
         # T attn
         qk_t = x.permute(0, 2, 1, 3).reshape(b * n, f, t)

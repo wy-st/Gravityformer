@@ -8,7 +8,7 @@ This is a Pytorch implementation of Gravityformer. Our code is based on ASTGCN (
 # Pre:
 Step1: Clone the code of ASTGCN.
 
-Step2: Put Gravityformer.py into model and MN_astgcn.conf into configurations.
+Step2: Put Gravityformer.py into model and SF_astgcn.conf into configurations.
 
 
 # Train and Test:
